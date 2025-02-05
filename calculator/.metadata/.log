@@ -1,0 +1,109 @@
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2025-02-05 19:49:03.682
+!MESSAGE Failed to create image directory C:\Users\Drerf\Desktop\program\Github\Calculator\calculator\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images
+
+!ENTRY org.eclipse.egit.ui 4 0 2025-02-05 20:01:49.553
+!MESSAGE file:///C:\Users\Drerf\git\Calculator\calculator: not found.
+!STACK 0
+org.eclipse.jgit.api.errors.TransportException: file:///C:\Users\Drerf\git\Calculator\calculator: not found.
+	at org.eclipse.jgit.api.LsRemoteCommand.execute(LsRemoteCommand.java:192)
+	at org.eclipse.jgit.api.LsRemoteCommand.call(LsRemoteCommand.java:131)
+	at org.eclipse.egit.core.op.ListRemoteOperation.run(ListRemoteOperation.java:116)
+	at org.eclipse.egit.ui.internal.clone.SourceBranchPage$9.run(SourceBranchPage.java:377)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:124)
+Caused by: org.eclipse.jgit.errors.NoRemoteRepositoryException: file:///C:\Users\Drerf\git\Calculator\calculator: not found.
+	at org.eclipse.jgit.transport.TransportLocal$1.open(TransportLocal.java:115)
+	at org.eclipse.jgit.transport.TransportBundleFile$1.open(TransportBundleFile.java:84)
+	at org.eclipse.jgit.transport.Transport.open(Transport.java:558)
+	at org.eclipse.jgit.api.LsRemoteCommand.execute(LsRemoteCommand.java:159)
+	... 4 more
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2025-02-05 20:10:39.902
+!MESSAGE Can't write workspace state
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Drerf\Desktop\program\Github\Calculator\calculator\.metadata\.plugins\org.eclipse.m2e.core\workspaceState.ser (The system cannot find the path specified)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:289)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:230)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:179)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryReader.createObjectOutputStream(ProjectRegistryReader.java:127)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryReader.writeWorkspaceState(ProjectRegistryReader.java:116)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.writeWorkspaceState(ProjectRegistryManager.java:1047)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.saving(ProjectRegistryManager.java:1198)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:52)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.jdt.launching 4 4 2025-02-05 20:10:39.903
+!MESSAGE The system cannot find the path specified
+!STACK 0
+java.io.IOException: The system cannot find the path specified
+	at java.base/java.io.WinNTFileSystem.createFileExclusively0(Native Method)
+	at java.base/java.io.WinNTFileSystem.createFileExclusively(WinNTFileSystem.java:536)
+	at java.base/java.io.File.createNewFile(File.java:1045)
+	at org.eclipse.jdt.internal.launching.LaunchingPlugin.writeInstallInfo(LaunchingPlugin.java:1110)
+	at org.eclipse.jdt.internal.launching.LaunchingPlugin$1$1.saving(LaunchingPlugin.java:584)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:52)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.resources 4 568 2025-02-05 20:10:39.908
+!MESSAGE Could not write metadata for '/'.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Drerf\Desktop\program\Github\Calculator\calculator\.metadata\.plugins\org.eclipse.core.resources\.root\.markers.snap (The system cannot find the path specified)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:289)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:230)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:150)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:52)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:48)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1859)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1264)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:52)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.jdt.launching 4 4 2025-02-05 20:15:39.914
+!MESSAGE The system cannot find the path specified
+!STACK 0
+java.io.IOException: The system cannot find the path specified
+	at java.base/java.io.WinNTFileSystem.createFileExclusively0(Native Method)
+	at java.base/java.io.WinNTFileSystem.createFileExclusively(WinNTFileSystem.java:536)
+	at java.base/java.io.File.createNewFile(File.java:1045)
+	at org.eclipse.jdt.internal.launching.LaunchingPlugin.writeInstallInfo(LaunchingPlugin.java:1110)
+	at org.eclipse.jdt.internal.launching.LaunchingPlugin$1$1.saving(LaunchingPlugin.java:584)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:453)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:269)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:272)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1226)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:52)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.resources 4 568 2025-02-05 20:15:39.918
+!MESSAGE Could not write metadata for '/.org.eclipse.egit.core.cmp'.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Drerf\Desktop\program\Github\Calculator\calculator\.metadata\.plugins\org.eclipse.core.resources\.projects\.org.eclipse.egit.core.cmp\.markers.snap (The system cannot find the path specified)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:289)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:230)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:150)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:52)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:48)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1859)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1928)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1264)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1205)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:52)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)

@@ -1,0 +1,47 @@
+package tui;
+
+import java.util.Scanner;
+
+public class MainMenu {
+	
+	public void mainMenu(){
+        boolean running = true;
+        while(running){
+            int choice = writeMainMenu();
+            switch(choice){
+                case 1:
+                    //add();
+                    break;
+                case 2:
+                	//subtract();
+                    break;
+                case 3:
+                	//multiply();
+                    break;
+                case 4:
+                	//devide();
+                    break;
+                case 0:
+                    running = false;
+                    break;
+            }
+        }
+    }
+	 private int writeMainMenu(){
+	        Scanner keyboard = new Scanner(System.in);
+	        System.out.println("**HovedMenu**");
+	        System.out.println("(1) add numbers");
+	        System.out.println("(2) subtract numbers");
+	        System.out.println("(3) multiply numbers");
+	        System.out.println("(4) devide numbers");
+	        System.out.println("(0) end program");
+
+	        while(!keyboard.hasNextInt()){
+	            System.out.println("you can only input numbers");
+	            keyboard.nextLine();
+	        }
+	        int choice = keyboard.nextInt();
+	        return choice;
+	    }
+	 
+}

@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+C:\Users\Drerf\Desktop\program\Github\Calculator\calculator\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+2441938283.index
+2612762050.index
