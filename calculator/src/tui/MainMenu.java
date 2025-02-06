@@ -23,6 +23,7 @@ public class MainMenu {
                     break;
                 case 0:
                     running = false;
+                    System.out.println("program terminated");
                     break;
             }
         }
