@@ -1,8 +1,11 @@
 package tui;
 
 import java.util.Scanner;
+import java.util.ArrayList;
+import mod.*;
 
 public class MainMenu {
+	private ArrayList<Double> listNum;
 	
 	public void mainMenu(){
         boolean running = true;
@@ -11,6 +14,7 @@ public class MainMenu {
             switch(choice){
                 case 1:
                     //add();
+                	inputNum();
                     break;
                 case 2:
                 	//subtract();
@@ -44,5 +48,23 @@ public class MainMenu {
 	        int choice = keyboard.nextInt();
 	        return choice;
 	    }
-	 
+	 private void inputNum() {
+		 Scanner keyboard = new Scanner(System.in);
+		 listNum = new ArrayList<>();
+		 System.out.println("Input amount of numbers");
+		 while (!keyboard.hasNextInt()) {
+	            System.out.println("Input must be a number");
+	            keyboard.nextLine();
+	        }
+		 int numOfNum = keyboard.nextInt();
+		 for(;numOfNum>1;numOfNum--) {
+			 System.out.println("Input a number");
+			 double num = keyboard.nextDouble();
+			 while (!keyboard.hasNextDouble()) {
+		            System.out.println("Input must be a number");
+		            keyboard.nextDouble();
+			 }
+			 listNum.add(num);
+		 }
+	 }
 }
