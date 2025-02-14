@@ -14,7 +14,7 @@ public class MainMenu {
             switch(choice){
                 case 1:
                     //add();
-                	inputNum();
+                	inputNumbers();
                     break;
                 case 2:
                 	//subtract();
@@ -48,23 +48,32 @@ public class MainMenu {
 	        int choice = keyboard.nextInt();
 	        return choice;
 	    }
-	 private void inputNum() {
-		 Scanner keyboard = new Scanner(System.in);
+	 private void inputNumbers() {
+
 		 listNum = new ArrayList<>();
-		 System.out.println("Input amount of numbers");
-		 while (!keyboard.hasNextInt()) {
-	            System.out.println("Input must be a number");
-	            keyboard.nextLine();
-	        }
-		 int numOfNum = keyboard.nextInt();
-		 for(;numOfNum>1;numOfNum--) {
-			 System.out.println("Input a number");
-			 double num = keyboard.nextDouble();
-			 while (!keyboard.hasNextDouble()) {
-		            System.out.println("Input must be a number");
-		            keyboard.nextDouble();
-			 }
-			 listNum.add(num);
+		 System.out.println("How many numbers?");
+		 double numOfNum = getNumberFromKeyboard();
+		 for(int tries=0;tries<numOfNum;tries++) {
+			 listNum.add(getNumberFromKeyboard());
 		 }
 	 }
+	 private double getNumberFromKeyboard() {
+		 boolean valid=false;
+		 double num=0;
+		 do {
+			 System.out.println("Input a number");
+			 try { 
+				 Scanner keyboard = new Scanner(System.in);
+				 num = keyboard.nextDouble();
+				 valid=true;
+			 }
+			 catch(Exception ex){
+				 System.out.println("Not a number"); 
+			 }
+
+			 
+		 }while(!valid);
+		 return num;
+	 } 
 }
+//test
