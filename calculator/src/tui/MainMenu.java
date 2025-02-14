@@ -1,5 +1,5 @@
 package tui;
-
+//Jimmi is stoooopid
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -15,16 +15,11 @@ public class MainMenu {
 			switch(choice){
 			case 1:
 				inputNumbers();
-				add();
+				getOperatorFromKeyboard();
+				calculates();
 				break;
 			case 2:
-				//subtract();
-				break;
-			case 3:
-				//multiply();
-				break;
-			case 4:
-				//devide();
+				
 				break;
 			case 0:
 				running = false;
@@ -35,12 +30,10 @@ public class MainMenu {
 	}
 	private int writeMainMenu(){
 		Scanner keyboard = new Scanner(System.in);
-		System.out.println("**HovedMenu**");
-		System.out.println("(1) add numbers");
-		System.out.println("(2) subtract numbers");
-		System.out.println("(3) multiply numbers");
-		System.out.println("(4) devide numbers");
-		System.out.println("(0) end program");
+		System.out.println("**MainMenu**");
+		System.out.println("(1) Calculate");
+		System.out.println("(2) Print all calculations");
+		System.out.println("(0) End program");
 
 		while(!keyboard.hasNextInt()){
 			System.out.println("you can only input numbers");
@@ -71,20 +64,57 @@ public class MainMenu {
 			catch(Exception ex){
 				System.out.println("Not a number"); 
 			}
-
-
 		}while(!valid);
 		return num;
-	} 
-	private void add() {
-		double sum = 0;
+	}
+	
+	private String getOperatorFromKeyboard() {
+		boolean valid=false;
+		Scanner keyboard = new Scanner(System.in);
+		String operator=" ";
+		System.out.println("Input a operator (+ - * /)");
+		operator = keyboard.nextLine();
+			if(operator=="+"||operator=="-"||operator=="*"||operator=="/"){
+				operator = keyboard.nextLine();
+				valid=true;
+			}else {
+				System.out.println("Not an operator"); 
+				keyboard.nextLine();
+			}
+		while(!valid);
+		return operator;
+	}
+	
+	private void calculates() {
+		double sum = listNum.getFirst();
 		if(listNum==null) {
 			ArrayList<Double> listNum = new ArrayList<Double>();
 		}
 		Iterator<Double> it = listNum.iterator();
-		while(it.hasNext()) {
-			System.out.print(it.hasNext()+"+");
+		for(Double num : listNum) {
+			sum = sum+num;
 		}
-		System.out.print("="+sum);
+		for(int i=0; i<listNum.size()-1;i++) {
+			System.out.print(it.next()+"+"); 
+		}
+		System.out.print(it.next()); 
+		System.out.print("="+sum); 
+		System.out.println(); 
+	}
+	private void subtract() {
+		double sum = listNum.getFirst();
+		if(listNum==null) {
+			ArrayList<Double> listNum = new ArrayList<Double>();
+		}
+		Iterator<Double> it = listNum.iterator();
+		for(Double num : listNum) {
+			sum = sum-num;
+		}
+		for(int i=0; i<listNum.size()-1;i++) {
+			System.out.print(it.next()+"-"); 
+		}
+		System.out.print(it.next()); 
+		System.out.print("="+sum); 
+		System.out.println(); 
 	}
 }
