@@ -1,4 +1,5 @@
 package tui;
+
 //Jimmi is stoooopid
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -7,19 +8,20 @@ import mod.*;
 
 public class MainMenu {
 	private ArrayList<Double> listNum;
+	private String operator;
 
-	public void mainMenu(){
+	public void mainMenu() {
 		boolean running = true;
-		while(running){
+		while (running) {
 			int choice = writeMainMenu();
-			switch(choice){
+			switch (choice) {
 			case 1:
-				inputNumbers();
 				getOperatorFromKeyboard();
+				inputNumbers();
 				calculates();
 				break;
 			case 2:
-				
+
 				break;
 			case 0:
 				running = false;
@@ -28,93 +30,93 @@ public class MainMenu {
 			}
 		}
 	}
-	private int writeMainMenu(){
+
+	private int writeMainMenu() {
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("**MainMenu**");
 		System.out.println("(1) Calculate");
 		System.out.println("(2) Print all calculations");
 		System.out.println("(0) End program");
 
-		while(!keyboard.hasNextInt()){
+		while (!keyboard.hasNextInt()) {
 			System.out.println("you can only input numbers");
 			keyboard.nextLine();
 		}
 		int choice = keyboard.nextInt();
 		return choice;
 	}
+
 	private void inputNumbers() {
 
 		listNum = new ArrayList<>();
 		System.out.println("How many numbers?");
 		double numOfNum = getNumberFromKeyboard();
-		for(int tries=0;tries<numOfNum;tries++) {
+		for (int tries = 0; tries < numOfNum; tries++) {
 			listNum.add(getNumberFromKeyboard());
 		}
 	}
+
 	private double getNumberFromKeyboard() {
-		boolean valid=false;
-		double num=0;
+		boolean valid = false;
+		double num = 0;
 		do {
 			System.out.println("Input a number");
-			try { 
+			try {
 				Scanner keyboard = new Scanner(System.in);
 				num = keyboard.nextDouble();
-				valid=true;
+				valid = true;
+			} catch (Exception ex) {
+				System.out.println("Not a number");
 			}
-			catch(Exception ex){
-				System.out.println("Not a number"); 
-			}
-		}while(!valid);
+		} while (!valid);
 		return num;
 	}
-	
+
 	private String getOperatorFromKeyboard() {
-		boolean valid=false;
-		Scanner keyboard = new Scanner(System.in);
-		String operator=" ";
-		System.out.println("Input a operator (+ - * /)");
-		operator = keyboard.nextLine();
-			if(operator=="+"||operator=="-"||operator=="*"||operator=="/"){
-				operator = keyboard.nextLine();
-				valid=true;
-			}else {
-				System.out.println("Not an operator"); 
-				keyboard.nextLine();
+		boolean valid = false;
+		do {
+			Scanner keyboard = new Scanner(System.in);
+			System.out.println("Input a operator +,-,*,/");
+			operator = keyboard.nextLine();
+			if (operator.equals("+") || operator.equals("-") || operator.equals("*") || operator.equals("/")) {
+				valid = true;
 			}
-		while(!valid);
+			System.out.println("Not a operator");
+		} while (!valid);
 		return operator;
+
 	}
-	
+
 	private void calculates() {
+
 		double sum = listNum.getFirst();
-		if(listNum==null) {
+		if (listNum == null) {
 			ArrayList<Double> listNum = new ArrayList<Double>();
 		}
-		Iterator<Double> it = listNum.iterator();
-		for(Double num : listNum) {
-			sum = sum+num;
+		System.out.print(sum);
+		for (int i = 1; i < listNum.size(); i++) {
+			System.out.print(operator+ listNum.get(i));
+			sum = sum + listNum.get(i);
 		}
-		for(int i=0; i<listNum.size()-1;i++) {
-			System.out.print(it.next()+"+"); 
-		}
-		System.out.print(it.next()); 
-		System.out.print("="+sum); 
-		System.out.println(); 
+		System.out.print("=" + sum);
+		System.out.println();
+
 	}
+
 	private void subtract() {
 		double sum = listNum.getFirst();
-		if(listNum==null) {
+		if (listNum == null) {
 			ArrayList<Double> listNum = new ArrayList<Double>();
 		}
 		Iterator<Double> it = listNum.iterator();
-		for(Double num : listNum) {
-			sum = sum-num;
+		for (Double num : listNum) {
+			sum = sum - num;
 		}
-		for(int i=0; i<listNum.size()-1;i++) {
-			System.out.print(it.next()+"-"); 
+		for (int i = 0; i < listNum.size() - 1; i++) {
+			System.out.print(it.next() + "-");
 		}
-		System.out.print(it.next()); 
-		System.out.print("="+sum); 
-		System.out.println(); 
+		System.out.print(it.next());
+		System.out.print("=" + sum);
+		System.out.println();
 	}
 }
