@@ -1,6 +1,5 @@
-package tui;
-
 //Jimmi is stoooopid
+package tui;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -80,26 +79,57 @@ public class MainMenu {
 			operator = keyboard.nextLine();
 			if (operator.equals("+") || operator.equals("-") || operator.equals("*") || operator.equals("/")) {
 				valid = true;
+			} else {
+				System.out.println("Not a operator");
 			}
-			System.out.println("Not a operator");
 		} while (!valid);
 		return operator;
 
 	}
 
 	private void calculates() {
-
 		double sum = listNum.getFirst();
-		if (listNum == null) {
-			ArrayList<Double> listNum = new ArrayList<Double>();
+		switch (operator) {
+		case "+":
+			System.out.print(sum);
+			for (int i = 1; i < listNum.size(); i++) {
+				System.out.print(operator + listNum.get(i));
+				sum = sum + listNum.get(i);
+			}
+			System.out.print("=" + sum);
+			System.out.println();
+			break;
+
+		case "-":
+			System.out.print(sum);
+			for (int i = 1; i < listNum.size(); i++) {
+				System.out.print(operator + listNum.get(i));
+				sum = sum - listNum.get(i);
+			}
+			System.out.print("=" + sum);
+			System.out.println();
+			break;
+
+		case "*":
+			System.out.print(sum);
+			for (int i = 1; i < listNum.size(); i++) {
+				System.out.print(operator + listNum.get(i));
+				sum = sum * listNum.get(i);
+			}
+			System.out.print("=" + sum);
+			System.out.println();
+			break;
+
+		case "/":
+			System.out.print(sum);
+			for (int i = 1; i < listNum.size(); i++) {
+				System.out.print(operator + listNum.get(i));
+				sum = sum / listNum.get(i);
+			}
+			System.out.print("=" + sum);
+			System.out.println();
+			break;
 		}
-		System.out.print(sum);
-		for (int i = 1; i < listNum.size(); i++) {
-			System.out.print(operator+ listNum.get(i));
-			sum = sum + listNum.get(i);
-		}
-		System.out.print("=" + sum);
-		System.out.println();
 
 	}
 
