@@ -24,7 +24,7 @@ public class MainMenu {
 				break;
 			case 0:
 				running = false;
-				System.out.println("program terminated");
+				System.out.println("Program has terminated");
 				break;
 			}
 		}
@@ -46,22 +46,41 @@ public class MainMenu {
 	}
 
 	private void inputNumbers() {
-
 		listNum = new ArrayList<>();
-		System.out.println("How many numbers?");
-		double numOfNum = getNumberFromKeyboard();
-		for (int tries = 0; tries < numOfNum; tries++) {
-			listNum.add(getNumberFromKeyboard());
-		}
+		boolean valid = false;
+		do {
+			System.out.println("How many numbers?");
+			double numOfNum = getNumberFromKeyboard();
+			if (numOfNum > 1) {
+				for (int tries = 0; tries < numOfNum; tries++) {
+					listNum.add(getNumberFromKeyboard());
+				}
+				valid = true;
+			} else {
+				System.out.println("Must be 2 or greater");
+			}
+		} while (!valid);
 	}
 
 	private double getNumberFromKeyboard() {
 		boolean valid = false;
 		double num = 0;
+		Scanner keyboard = new Scanner(System.in);
 		do {
 			System.out.println("Input a number");
+//			if(operator.equals("/")) {
+	//			System.out.println("Input a number");
+		//		try{
+			//			num = keyboard.nextDouble();
+				//		if(!(num==0)){
+					//	valid = true;	
+					//}
+					//}
+				 //catch (Exception ex) {
+					//System.out.println("Not a number");
+				//}
+			//}
 			try {
-				Scanner keyboard = new Scanner(System.in);
 				num = keyboard.nextDouble();
 				valid = true;
 			} catch (Exception ex) {
@@ -132,7 +151,10 @@ public class MainMenu {
 		}
 
 	}
-
+	private void calculationsToAString() {
+		String calculations = "123";
+	}
+//redudent methode
 	private void subtract() {
 		double sum = listNum.getFirst();
 		if (listNum == null) {
