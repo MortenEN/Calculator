@@ -3,21 +3,24 @@ package tui;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Iterator;
-import mod.*;
+import Controller.CalculationController;
+
 
 public class MainMenu {
 	private ArrayList<Double> listNum;
 	private String operator;
-
+	private CalculationController calculationController;
+	
 	public void mainMenu() {
+		calculationController = new CalculationController();
 		boolean running = true;
 		while (running) {
 			int choice = writeMainMenu();
 			switch (choice) {
 			case 1:
-				getOperatorFromKeyboard();
-				inputNumbers();
-				calculates();
+				calculationController.getOperatorFromKeyboard();
+				calculationController.inputNumbers();
+				calculationController.calculates();
 				break;
 			case 2:
 
@@ -43,132 +46,5 @@ public class MainMenu {
 		}
 		int choice = keyboard.nextInt();
 		return choice;
-	}
-
-	private void inputNumbers() {
-		listNum = new ArrayList<>();
-		boolean valid = false;
-		do {
-			System.out.println("How many numbers?");
-			double numOfNum = getNumberFromKeyboard();
-			if (numOfNum > 1) {
-				for (int tries = 0; tries < numOfNum; tries++) {
-					listNum.add(getNumberFromKeyboard());
-				}
-				valid = true;
-			} else {
-				System.out.println("Must be 2 or greater");
-			}
-		} while (!valid);
-	}
-
-	private double getNumberFromKeyboard() {
-		boolean valid = false;
-		double num = 0;
-		Scanner keyboard = new Scanner(System.in);
-		do {
-			System.out.println("Input a number");
-//			if(operator.equals("/")) {
-	//			System.out.println("Input a number");
-		//		try{
-			//			num = keyboard.nextDouble();
-				//		if(!(num==0)){
-					//	valid = true;	
-					//}
-					//}
-				 //catch (Exception ex) {
-					//System.out.println("Not a number");
-				//}
-			//}
-			try {
-				num = keyboard.nextDouble();
-				valid = true;
-			} catch (Exception ex) {
-				System.out.println("Not a number");
-			}
-		} while (!valid);
-		return num;
-	}
-
-	private String getOperatorFromKeyboard() {
-		boolean valid = false;
-		do {
-			Scanner keyboard = new Scanner(System.in);
-			System.out.println("Input a operator +,-,*,/");
-			operator = keyboard.nextLine();
-			if (operator.equals("+") || operator.equals("-") || operator.equals("*") || operator.equals("/")) {
-				valid = true;
-			} else {
-				System.out.println("Not a operator");
-			}
-		} while (!valid);
-		return operator;
-
-	}
-
-	private void calculates() {
-		double sum = listNum.getFirst();
-		switch (operator) {
-		case "+":
-			System.out.print(sum);
-			for (int i = 1; i < listNum.size(); i++) {
-				System.out.print(operator + listNum.get(i));
-				sum = sum + listNum.get(i);
-			}
-			System.out.print("=" + sum);
-			System.out.println();
-			break;
-
-		case "-":
-			System.out.print(sum);
-			for (int i = 1; i < listNum.size(); i++) {
-				System.out.print(operator + listNum.get(i));
-				sum = sum - listNum.get(i);
-			}
-			System.out.print("=" + sum);
-			System.out.println();
-			break;
-
-		case "*":
-			System.out.print(sum);
-			for (int i = 1; i < listNum.size(); i++) {
-				System.out.print(operator + listNum.get(i));
-				sum = sum * listNum.get(i);
-			}
-			System.out.print("=" + sum);
-			System.out.println();
-			break;
-
-		case "/":
-			System.out.print(sum);
-			for (int i = 1; i < listNum.size(); i++) {
-				System.out.print(operator + listNum.get(i));
-				sum = sum / listNum.get(i);
-			}
-			System.out.print("=" + sum);
-			System.out.println();
-			break;
-		}
-
-	}
-	private void calculationsToAString() {
-		String calculations = "123";
-	}
-//redudent methode
-	private void subtract() {
-		double sum = listNum.getFirst();
-		if (listNum == null) {
-			ArrayList<Double> listNum = new ArrayList<Double>();
-		}
-		Iterator<Double> it = listNum.iterator();
-		for (Double num : listNum) {
-			sum = sum - num;
-		}
-		for (int i = 0; i < listNum.size() - 1; i++) {
-			System.out.print(it.next() + "-");
-		}
-		System.out.print(it.next());
-		System.out.print("=" + sum);
-		System.out.println();
 	}
 }
