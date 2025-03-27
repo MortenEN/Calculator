@@ -16,4 +16,12 @@ public class CalculationContainer {
 		}
 		return uniqueInstance;
 	} 
+	public void printAll() {
+		for (String builder : listCalculations) {
+			System.out.println(builder);
+		}
+	}
+	public void add(String calculation) {
+		listCalculations.add(calculation);
+	}
 }

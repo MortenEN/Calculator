@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 import Container.CalculationContainer;
+import java.lang.StringBuilder;
 
 public class CalculationController {
 	private ArrayList<Double> listNum;
@@ -11,7 +12,7 @@ public class CalculationController {
 	private CalculationContainer calculationContainer;
 	
 	public CalculationController() {
-		calculationContainer = CalculationContainer.getUniqueInstance();
+		calculationContainer  = CalculationContainer.getUniqueInstance();
 	}
 	
 	public void inputNumbers() {
@@ -86,7 +87,7 @@ public class CalculationController {
 			}
 			System.out.print("=" + sum);
 			System.out.println();
-			listNum.add(sum);
+			listNum.addLast(sum);
 			break;
 
 		case "-":
@@ -97,7 +98,7 @@ public class CalculationController {
 			}
 			System.out.print("=" + sum);
 			System.out.println();
-			listNum.add(sum);
+			listNum.addLast(sum);
 			break;
 
 		case "*":
@@ -108,7 +109,7 @@ public class CalculationController {
 			}
 			System.out.print("=" + sum);
 			System.out.println();
-			listNum.add(sum);
+			listNum.addLast(sum);
 			break;
 
 		case "/":
@@ -119,18 +120,21 @@ public class CalculationController {
 			}
 			System.out.print("=" + sum);
 			System.out.println();
-			listNum.add(sum);
+			listNum.addLast(sum);
 			break;
 		}
 
 	}
-	private void convertToString(ArrayList<Double> listNum) {
-		Iterator<Double> it = listNum.iterator();
+	public String convertToString() {
+		StringBuilder builder= new StringBuilder();
 		for (int i = 0; i < listNum.size() - 1; i++) {
-			System.out.print(it.next() + operator);
+			builder.append(listNum.get(i)+operator);
 		}
-		System.out.print("=");
-		System.out.print(it.next());
+		builder.append("="+listNum.getLast());
+		return builder.toString();
+	}
+	public void addToContainer(String calculation) {
+		calculationContainer.add(calculation);
 	}
 //redudent methode
 	private void subtract() {

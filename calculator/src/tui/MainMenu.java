@@ -1,6 +1,9 @@
 //Jimmi is stoooopid
 package tui;
 import java.util.Scanner;
+
+import Container.CalculationContainer;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import Controller.CalculationController;
@@ -10,8 +13,11 @@ public class MainMenu {
 	private ArrayList<Double> listNum;
 	private String operator;
 	private CalculationController calculationController;
+	private CalculationContainer calculationContainer;
+	private String builder;
 	
 	public void mainMenu() {
+		calculationContainer  = CalculationContainer.getUniqueInstance();
 		calculationController = new CalculationController();
 		boolean running = true;
 		while (running) {
@@ -21,9 +27,11 @@ public class MainMenu {
 				calculationController.getOperatorFromKeyboard();
 				calculationController.inputNumbers();
 				calculationController.calculates();
+				calculationController.convertToString(listNum);
+				calculationController.addToContainer(builder);
 				break;
 			case 2:
-
+				calculationContainer.printAll();
 				break;
 			case 0:
 				running = false;
