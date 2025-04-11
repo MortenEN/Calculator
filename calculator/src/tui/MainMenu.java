@@ -27,8 +27,8 @@ public class MainMenu {
 				calculationController.getOperatorFromKeyboard();
 				calculationController.inputNumbers();
 				calculationController.calculates();
-				calculationController.convertToString(listNum);
-				calculationController.addToContainer(builder);
+				//calculationController.convertToString(listNum);
+				//calculationController.addToContainer(builder);
 				break;
 			case 2:
 				calculationContainer.printAll();

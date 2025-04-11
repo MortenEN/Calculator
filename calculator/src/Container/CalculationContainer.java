@@ -10,7 +10,7 @@ public class CalculationContainer {
 		listCalculations = new ArrayList<>();
 	}
 
-	public static CalculationContainer getUniqueInstance(){
+	public static synchronized CalculationContainer getUniqueInstance(){
 		if(uniqueInstance == null){
 			uniqueInstance = new CalculationContainer();
 		}

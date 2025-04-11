@@ -21,7 +21,7 @@ public class CalculationController {
 		do {
 			System.out.println("How many numbers?");
 			double numOfNum = getNumberFromKeyboard();
-			if (numOfNum > 1) {
+			if (numOfNum >= 2) {
 				for (int tries = 0; tries < numOfNum; tries++) {
 					listNum.add(getNumberFromKeyboard());
 				}
@@ -113,6 +113,10 @@ public class CalculationController {
 			break;
 
 		case "/":
+			if(listNum.getLast().equals(0.0)) {
+				System.out.println("Cannot devide by zero");
+			}else {
+				
 			System.out.print(sum);
 			for (int i = 1; i < listNum.size(); i++) {
 				System.out.print(operator + listNum.get(i));
@@ -122,6 +126,7 @@ public class CalculationController {
 			System.out.println();
 			listNum.addLast(sum);
 			break;
+			}
 		}
 
 	}
