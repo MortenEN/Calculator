@@ -4,16 +4,17 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 import Container.CalculationContainer;
+import Container.CalculationStorageIF;
+
 import java.lang.StringBuilder;
 
 public class CalculationController {
 	private ArrayList<Double> listNum;
 	private String operator;
-	private CalculationContainer calculationContainer;
-	private String builder;
+	private CalculationStorageIF calculationStorage;
 	
-	public CalculationController() {
-		calculationContainer  = CalculationContainer.getUniqueInstance();
+	public CalculationController(CalculationStorageIF calculationStorage) {
+		this.calculationStorage  = calculationStorage;
 	}
 	
 	public void inputNumbers() {
@@ -89,6 +90,8 @@ public class CalculationController {
 			System.out.print("=" + sum);
 			System.out.println();
 			listNum.addLast(sum);
+			String resultString1 = convertToString();
+			calculationStorage.add(resultString1);
 			break;
 
 		case "-":
@@ -100,6 +103,8 @@ public class CalculationController {
 			System.out.print("=" + sum);
 			System.out.println();
 			listNum.addLast(sum);
+			String resultString2 = convertToString();
+			calculationStorage.add(resultString2);
 			break;
 
 		case "*":
@@ -111,6 +116,8 @@ public class CalculationController {
 			System.out.print("=" + sum);
 			System.out.println();
 			listNum.addLast(sum);
+			String resultString3 = convertToString();
+			calculationStorage.add(resultString3);
 			break;
 
 		case "/":
@@ -124,11 +131,11 @@ public class CalculationController {
 			System.out.print("=" + sum);
 			System.out.println();
 			listNum.addLast(sum);
+			String resultString4 = convertToString();
+			calculationStorage.add(resultString4);
 			break;
 			}
 			}
-		String resultString = convertToString();
-	    calculationContainer.add(resultString);
 		}
 
 	public String convertToString() {
@@ -141,7 +148,7 @@ public class CalculationController {
 		return builder.toString();
 	}
 	public void addToContainer(String builder) {
-		calculationContainer.add(builder);
+		calculationStorage.add(builder);
 	}
 
 	private boolean lookForZero() {

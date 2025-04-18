@@ -3,6 +3,7 @@ package tui;
 import java.util.Scanner;
 
 import Container.CalculationContainer;
+import Container.CalculationStorageIF;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -10,15 +11,12 @@ import Controller.CalculationController;
 
 
 public class MainMenu {
-	private ArrayList<Double> listNum;
-	private String operator;
 	private CalculationController calculationController;
-	private CalculationContainer calculationContainer;
-	private String builder;
+	private CalculationStorageIF calculationStorage;
 	
 	public void mainMenu() {
-		calculationContainer  = CalculationContainer.getUniqueInstance();
-		calculationController = new CalculationController();
+		calculationStorage  = CalculationContainer.getUniqueInstance();
+		calculationController = new CalculationController(calculationStorage);
 		boolean running = true;
 		while (running) {
 			int choice = writeMainMenu();
@@ -31,7 +29,7 @@ public class MainMenu {
 				//calculationController.addToContainer(builder);
 				break;
 			case 2:
-				calculationContainer.printAll();
+				calculationStorage.printAll();
 				break;
 			case 0:
 				running = false;

@@ -1,6 +1,6 @@
 package Container;
 
-public interface CalculationStorage {
+public interface CalculationStorageIF {
 	void add(String calculation);
 	void printAll();
 }
