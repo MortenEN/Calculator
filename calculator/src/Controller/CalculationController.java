@@ -12,11 +12,11 @@ public class CalculationController {
 	private ArrayList<Double> listNum;
 	private String operator;
 	private CalculationStorageIF calculationStorage;
-	
+
 	public CalculationController(CalculationStorageIF calculationStorage) {
-		this.calculationStorage  = calculationStorage;
+		this.calculationStorage = calculationStorage;
 	}
-	
+
 	public void inputNumbers() {
 		listNum = new ArrayList<>();
 		boolean valid = false;
@@ -41,17 +41,17 @@ public class CalculationController {
 		do {
 			System.out.println("Input a number");
 //			if(operator.equals("/")) {
-	//			System.out.println("Input a number");
-		//		try{
-			//			num = keyboard.nextDouble();
-				//		if(!(num==0)){
-					//	valid = true;	
-					//}
-					//}
-				 //catch (Exception ex) {
-					//System.out.println("Not a number");
-				//}
-			//}
+			// System.out.println("Input a number");
+			// try{
+			// num = keyboard.nextDouble();
+			// if(!(num==0)){
+			// valid = true;
+			// }
+			// }
+			// catch (Exception ex) {
+			// System.out.println("Not a number");
+			// }
+			// }
 			try {
 				num = keyboard.nextDouble();
 				valid = true;
@@ -90,8 +90,7 @@ public class CalculationController {
 			System.out.print("=" + sum);
 			System.out.println();
 			listNum.addLast(sum);
-			String resultString1 = convertToString();
-			calculationStorage.add(resultString1);
+			convertToStringAndAddToStorage();
 			break;
 
 		case "-":
@@ -103,8 +102,7 @@ public class CalculationController {
 			System.out.print("=" + sum);
 			System.out.println();
 			listNum.addLast(sum);
-			String resultString2 = convertToString();
-			calculationStorage.add(resultString2);
+			convertToStringAndAddToStorage();
 			break;
 
 		case "*":
@@ -116,39 +114,43 @@ public class CalculationController {
 			System.out.print("=" + sum);
 			System.out.println();
 			listNum.addLast(sum);
-			String resultString3 = convertToString();
-			calculationStorage.add(resultString3);
+			convertToStringAndAddToStorage();
 			break;
 
 		case "/":
-			if(!lookForZero()) {
-				
-			System.out.print(sum);
-			for (int i = 1; i < listNum.size(); i++) {
-				System.out.print(operator + listNum.get(i));
-				sum = sum / listNum.get(i);
-			}
-			System.out.print("=" + sum);
-			System.out.println();
-			listNum.addLast(sum);
-			String resultString4 = convertToString();
-			calculationStorage.add(resultString4);
-			break;
-			}
+			if (!lookForZero()) {
+
+				System.out.print(sum);
+				for (int i = 1; i < listNum.size(); i++) {
+					System.out.print(operator + listNum.get(i));
+					sum = sum / listNum.get(i);
+				}
+				System.out.print("=" + sum);
+				System.out.println();
+				listNum.addLast(sum);
+				convertToStringAndAddToStorage();
+				break;
 			}
 		}
+	}
 
 	public String convertToString() {
-		StringBuilder builder= new StringBuilder();
+		StringBuilder builder = new StringBuilder();
 		for (int i = 0; i < listNum.size() - 1; i++) {
-			builder.append(listNum.get(i)+operator);
+			builder.append(listNum.get(i) + operator);
 		}
-		builder.deleteCharAt(builder.length()-1);
-		builder.append("="+listNum.getLast());
+		builder.deleteCharAt(builder.length() - 1);
+		builder.append("=" + listNum.getLast());
 		return builder.toString();
 	}
+
 	public void addToContainer(String builder) {
 		calculationStorage.add(builder);
+	}
+
+	private void convertToStringAndAddToStorage() {
+		String resultString = convertToString();
+		calculationStorage.add(resultString);
 	}
 
 	private boolean lookForZero() {
