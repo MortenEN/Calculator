@@ -10,6 +10,7 @@ public class CalculationController {
 	private ArrayList<Double> listNum;
 	private String operator;
 	private CalculationContainer calculationContainer;
+	private String builder;
 	
 	public CalculationController() {
 		calculationContainer  = CalculationContainer.getUniqueInstance();
@@ -113,9 +114,7 @@ public class CalculationController {
 			break;
 
 		case "/":
-			if(listNum.getLast().equals(0.0)) {
-				System.out.println("Cannot devide by zero");
-			}else {
+			if(!lookForZero()) {
 				
 			System.out.print(sum);
 			for (int i = 1; i < listNum.size(); i++) {
@@ -127,20 +126,38 @@ public class CalculationController {
 			listNum.addLast(sum);
 			break;
 			}
+			}
+		String resultString = convertToString();
+	    calculationContainer.add(resultString);
 		}
 
-	}
 	public String convertToString() {
 		StringBuilder builder= new StringBuilder();
 		for (int i = 0; i < listNum.size() - 1; i++) {
 			builder.append(listNum.get(i)+operator);
 		}
+		builder.deleteCharAt(builder.length()-1);
 		builder.append("="+listNum.getLast());
 		return builder.toString();
 	}
-	public void addToContainer(String calculation) {
-		calculationContainer.add(calculation);
+	public void addToContainer(String builder) {
+		calculationContainer.add(builder);
 	}
+
+	private boolean lookForZero() {
+		int i = 1;
+		boolean zero = false;
+		while (i < listNum.size() && !zero) {
+			if (listNum.get(i).equals(0.0)) {
+				System.out.println("Cannot devide by zero");
+				zero = true;
+			} else {
+				i++;
+			}
+		}
+		return zero;
+	}
+
 //redudent methode
 	private void subtract() {
 		double sum = listNum.getFirst();
