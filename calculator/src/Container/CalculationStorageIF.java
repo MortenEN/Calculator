@@ -1,6 +1,11 @@
 package Container;
 
+import java.util.ArrayList;
+
 public interface CalculationStorageIF {
 	void add(String calculation);
-	void printAll();
+
+	ArrayList<String> getList();
+
+	String getLast();
 }
